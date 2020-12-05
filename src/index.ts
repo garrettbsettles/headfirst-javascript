@@ -1,18 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unused-vars
-const app: Element = document.querySelector('#root')!;
+const init = (selector: string) => {
+	return function () {
+		const planet = document.getElementById(selector);
+		if (planet instanceof HTMLElement) {
+			planet.innerHTML = 'Red Alert: hit by phaser fire!';
+			planet.setAttribute(`style`, `color: red; font-style: italic;`);
+		}
+	};
+};
 
-// interface Car {
-// 	make: string;
-// 	model: string;
-// 	year: number;
-// 	color: string;
-// 	passenger: number,
-// }
-
-// const cadi = {
-// 	make: "GM",
-// 	model: "Cadillac",
-// 	year: 1955,
-// 	color: "tan",
-// 	passenger
-// }
+window.addEventListener('load', init('greenplanet'));
